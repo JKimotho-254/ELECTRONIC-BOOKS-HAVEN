@@ -1,0 +1,22 @@
+body {
+    background-color: #0d0d0d;
+    color: #f3f4f6;
+}
+
+.transition-all {
+    transition: all 0.3s ease-in-out;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #0d0d0d;
+}
+::-webkit-scrollbar-thumb {
+    background: #262626;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #404040;
+}
