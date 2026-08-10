@@ -155,12 +155,49 @@
             </div>
         </section>
 
-        <!-- 3. Browse By Genre Section -->
+        <!-- 3. Hierarchical Catalog & Multi-Level Genre Browsing -->
         <section id="catalog" class="space-y-6">
-            <div class="flex justify-between items-center">
-                <h3 class="text-2xl font-black text-white">Browse By Genre</h3>
-                <div id="genre-filters" class="flex flex-wrap gap-2">
-                    <!-- Dynamic genre tags injected via JS -->
+            <div class="space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <h3 class="text-2xl font-black text-white flex items-center gap-2">
+                            <span>📚</span> Browse Catalog by Genre
+                        </h3>
+                        <p class="text-xs text-gray-400 mt-0.5">Select a main category, refine by subgenre, or search directly.</p>
+                    </div>
+
+                    <!-- Search Input -->
+                    <div class="relative min-w-[260px]">
+                        <input type="text" id="book-search-input" onkeyup="filterBooksBySearch()" placeholder="🔍 Search book title or author..." class="w-full bg-cardbg border border-cardborder rounded-xl px-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 transition">
+                    </div>
+                </div>
+
+                <!-- Main Category Selection Dropdown/Selector -->
+                <div class="bg-cardbg border border-cardborder rounded-2xl p-4 space-y-3">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-emerald-400">Main Category</label>
+                    <select id="main-category-select" onchange="onMainCategoryChange(this.value)" class="w-full bg-darkbg border border-cardborder rounded-xl px-4 py-3 text-sm font-semibold text-white focus:outline-none focus:border-emerald-500 transition">
+                        <option value="ALL">All Categories (Show Everything)</option>
+                        <option value="academic">🎓 1. Academic & Education</option>
+                        <option value="fiction">📖 2. Fiction & Literature</option>
+                        <option value="selfhelp">💡 3. Personal Development & Self-Help</option>
+                        <option value="business">💰 4. Business, Finance & Career</option>
+                        <option value="technology">💻 5. Technology & Digital Skills</option>
+                        <option value="society">🌍 6. Society, Culture & Humanities</option>
+                        <option value="health">❤️ 7. Health, Lifestyle & Wellness</option>
+                        <option value="arts">🎨 8. Arts, Media & Creative</option>
+                        <option value="children">🧒 9. Children & Young Readers</option>
+                        <option value="reference">📕 10. Reference & General Reading</option>
+                        <option value="audio">🎧 11. Audio & Short-Form Content</option>
+                    </select>
+
+                    <!-- Subgenre Pills Container (Dynamically Populated) -->
+                    <div id="subgenre-container" class="space-y-2 pt-2 border-t border-cardborder">
+                        <span class="block text-xs font-medium text-gray-400">Subgenres:</span>
+                        <div id="subgenre-pills" class="flex flex-wrap gap-2">
+                            <!-- Injected dynamically via JS depending on main category selection -->
+                            <button onclick="filterSubgenre('ALL')" class="subgenre-btn active-pill bg-emerald-600 text-white px-3 py-1 rounded-lg text-xs font-semibold transition">All Subgenres</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -168,9 +205,10 @@
             <div id="book-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
                 <!-- Book 1: Atomic Habits -->
-                <div class="bg-cardbg border border-cardborder rounded-3xl p-5 flex flex-col justify-between transition-all hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/5">
+                <div class="book-card bg-cardbg border border-cardborder rounded-3xl p-5 flex flex-col justify-between transition-all hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/5" data-category="selfhelp" data-subgenre="habits" data-title="atomic habits" data-author="james clear">
                     <div>
                         <div class="h-52 bg-slate-900/80 rounded-2xl mb-4 flex items-center justify-center border border-cardborder text-gray-500 text-xs font-semibold">Cover Preview</div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-2 inline-block">Personal Growth & Habits</span>
                         <h4 class="font-extrabold text-lg text-white">Atomic Habits</h4>
                         <p class="text-sm text-gray-400">James Clear</p>
                         <p class="text-emerald-400 font-extrabold text-base mt-2">KSh 70</p>
@@ -191,9 +229,10 @@
                 </div>
 
                 <!-- Book 2: The Psychology of Money -->
-                <div class="bg-cardbg border border-cardborder rounded-3xl p-5 flex flex-col justify-between transition-all hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/5">
+                <div class="book-card bg-cardbg border border-cardborder rounded-3xl p-5 flex flex-col justify-between transition-all hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/5" data-category="business" data-subgenre="finance" data-title="the psychology of money" data-author="morgan housel">
                     <div>
                         <div class="h-52 bg-slate-900/80 rounded-2xl mb-4 flex items-center justify-center border border-cardborder text-gray-500 text-xs font-semibold">Cover Preview</div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-2 inline-block">Personal Finance & Investing</span>
                         <h4 class="font-extrabold text-lg text-white">The Psychology of Money</h4>
                         <p class="text-sm text-gray-400">Morgan Housel</p>
                         <p class="text-emerald-400 font-extrabold text-base mt-2">KSh 70</p>
@@ -214,9 +253,10 @@
                 </div>
 
                 <!-- Book 3: Deep Work -->
-                <div class="bg-cardbg border border-cardborder rounded-3xl p-5 flex flex-col justify-between transition-all hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/5">
+                <div class="book-card bg-cardbg border border-cardborder rounded-3xl p-5 flex flex-col justify-between transition-all hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/5" data-category="selfhelp" data-subgenre="productivity" data-title="deep work" data-author="cal newport">
                     <div>
                         <div class="h-52 bg-slate-900/80 rounded-2xl mb-4 flex items-center justify-center border border-cardborder text-gray-500 text-xs font-semibold">Cover Preview</div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-2 inline-block">Productivity & Time Management</span>
                         <h4 class="font-extrabold text-lg text-white">Deep Work</h4>
                         <p class="text-sm text-gray-400">Cal Newport</p>
                         <p class="text-emerald-400 font-extrabold text-base mt-2">KSh 70</p>
@@ -233,6 +273,30 @@
                     <div class="mt-6 space-y-2">
                         <button onclick="toggleDetails('details-deep-work', this)" class="w-full bg-slate-800/80 hover:bg-slate-700 text-gray-300 py-2.5 rounded-xl text-xs font-bold transition">SHOW MORE ▼</button>
                         <button onclick="startCheckout('Deep Work', 70)" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-2.5 rounded-xl text-xs font-extrabold transition tracking-wide">BUY NOW</button>
+                    </div>
+                </div>
+
+                <!-- Book 4: Clean Code (Technology Sample) -->
+                <div class="book-card bg-cardbg border border-cardborder rounded-3xl p-5 flex flex-col justify-between transition-all hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/5" data-category="technology" data-subgenre="programming" data-title="clean code" data-author="robert c. martin">
+                    <div>
+                        <div class="h-52 bg-slate-900/80 rounded-2xl mb-4 flex items-center justify-center border border-cardborder text-gray-500 text-xs font-semibold">Cover Preview</div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-2 inline-block">Programming & Coding</span>
+                        <h4 class="font-extrabold text-lg text-white">Clean Code</h4>
+                        <p class="text-sm text-gray-400">Robert C. Martin</p>
+                        <p class="text-emerald-400 font-extrabold text-base mt-2">KSh 70</p>
+                        
+                        <div id="details-clean-code" class="hidden mt-4 pt-4 border-t border-cardborder space-y-2 text-sm text-gray-300">
+                            <p><strong>Description:</strong> A handbook of agile software craftsmanship.</p>
+                            <p><strong>Pages:</strong> 464</p>
+                            <p><strong>Available formats:</strong> PDF, EPUB</p>
+                            <p><strong>Audio copy:</strong> Available</p>
+                            <p><strong>Summary:</strong> Available</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 space-y-2">
+                        <button onclick="toggleDetails('details-clean-code', this)" class="w-full bg-slate-800/80 hover:bg-slate-700 text-gray-300 py-2.5 rounded-xl text-xs font-bold transition">SHOW MORE ▼</button>
+                        <button onclick="startCheckout('Clean Code', 70)" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-2.5 rounded-xl text-xs font-extrabold transition tracking-wide">BUY NOW</button>
                     </div>
                 </div>
 
@@ -263,7 +327,197 @@
         &copy; 2026 Electronic Books Haven. All rights reserved.
     </footer>
 
-    <!-- App Logic Scripts -->
+    <!-- Genre & Catalog Script Logic -->
+    <script>
+        // Subgenre Mapping Object based on your exact taxonomy
+        const SUBGENRES_MAP = {
+            academic: [
+                { id: 'medicine', name: '🩺 Medicine & Nursing' },
+                { id: 'biology', name: '🧬 Biology & Life Sciences' },
+                { id: 'chemistry', name: '⚗️ Chemistry' },
+                { id: 'physics', name: '⚛️ Physics' },
+                { id: 'math', name: '📐 Mathematics & Statistics' },
+                { id: 'cs', name: '💻 Computer Science & IT' },
+                { id: 'engineering', name: '🏗️ Engineering & Architecture' },
+                { id: 'law', name: '⚖️ Law' },
+                { id: 'business_econ', name: '📊 Business & Economics' },
+                { id: 'education', name: '👩‍🏫 Education & Teaching' },
+                { id: 'psychology', name: '🧠 Psychology' },
+                { id: 'geography', name: '🌍 Geography & Environmental' },
+                { id: 'history_political', name: '🏛️ History & Political Studies' },
+                { id: 'research', name: '📖 Research & Academic Writing' }
+            ],
+            fiction: [
+                { id: 'romance', name: '❤️ Romance' },
+                { id: 'mystery', name: '🕵️ Mystery & Crime' },
+                { id: 'thriller', name: '🔥 Thriller' },
+                { id: 'fantasy', name: '🧙 Fantasy' },
+                { id: 'scifi', name: '🚀 Science Fiction' },
+                { id: 'horror', name: '👻 Horror' },
+                { id: 'historical_fiction', name: '🏰 Historical Fiction' },
+                { id: 'young_adult', name: '🌟 Young Adult' },
+                { id: 'classics', name: '📜 Classics' },
+                { id: 'short_stories', name: '✍️ Short Stories' },
+                { id: 'drama', name: '🎭 Drama' },
+                { id: 'poetry', name: '🪶 Poetry' }
+            ],
+            selfhelp: [
+                { id: 'growth', name: '🌱 Personal Growth' },
+                { id: 'habits', name: '🔄 Habits & Behaviour' },
+                { id: 'goals', name: '🎯 Goals & Motivation' },
+                { id: 'productivity', name: '⏰ Productivity & Time' },
+                { id: 'mindset', name: '🧠 Mindset' },
+                { id: 'communication', name: '💬 Communication' },
+                { id: 'relationships', name: '🤝 Relationships' },
+                { id: 'wellbeing', name: '🧘 Emotional Well-being' },
+                { id: 'confidence', name: '🌟 Confidence & Leadership' }
+            ],
+            business: [
+                { id: 'biz_general', name: '💼 Business' },
+                { id: 'finance', name: '💵 Personal Finance' },
+                { id: 'investing', name: '📈 Investing' },
+                { id: 'banking', name: '🏦 Banking & Economics' },
+                { id: 'entrepreneurship', name: '🚀 Entrepreneurship' },
+                { id: 'marketing', name: '📣 Marketing & Sales' },
+                { id: 'management', name: '👔 Management & Leadership' },
+                { id: 'freelancing', name: '💻 Freelancing & Online Work' },
+                { id: 'career', name: '📄 Careers & Development' }
+            ],
+            technology: [
+                { id: 'comp_science', name: '🖥️ Computer Science' },
+                { id: 'programming', name: '👨‍💻 Programming & Coding' },
+                { id: 'webdev', name: '🌐 Web Development' },
+                { id: 'ai', name: '🤖 Artificial Intelligence' },
+                { id: 'cybersecurity', name: '🔐 Cybersecurity' },
+                { id: 'mobile', name: '📱 Mobile Technology' },
+                { id: 'design', name: '🎨 Graphic & UI/UX Design' },
+                { id: 'datascience', name: '📊 Data Science' },
+                { id: 'databases', name: '🗃️ Databases' }
+            ],
+            society: [
+                { id: 'soc_history', name: '🏛️ History' },
+                { id: 'soc_geo', name: '🗺️ Geography' },
+                { id: 'culture', name: '🌍 Culture & Society' },
+                { id: 'sociology', name: '🧑‍🤝‍🧑 Sociology' },
+                { id: 'politics', name: '🏛️ Politics & Government' },
+                { id: 'philosophy', name: '⚖️ Philosophy' },
+                { id: 'religion', name: '⛪ Religion & Spirituality' },
+                { id: 'languages', name: '🗣️ Languages & Linguistics' }
+            ],
+            health: [
+                { id: 'health_med', name: '🩺 Health & Medicine' },
+                { id: 'nutrition', name: '🥗 Nutrition' },
+                { id: 'fitness', name: '🏃 Fitness & Exercise' },
+                { id: 'mental_wellness', name: '🧠 Mental Wellness' },
+                { id: 'parenting', name: '👶 Parenting & Family' },
+                { id: 'cooking', name: '🍳 Cooking & Food' },
+                { id: 'lifestyle', name: '🌿 Lifestyle' }
+            ],
+            arts: [
+                { id: 'art_drawing', name: '🎨 Art & Drawing' },
+                { id: 'photography', name: '📷 Photography' },
+                { id: 'film', name: '🎬 Film & Cinema' },
+                { id: 'music', name: '🎵 Music' },
+                { id: 'creative_writing', name: '✍️ Creative Writing' },
+                { id: 'arch_design', name: '🏛️ Architecture & Design' },
+                { id: 'theatre', name: '🎭 Theatre & Performing' }
+            ],
+            children: [
+                { id: 'kids_books', name: '📚 Children\'s Books' },
+                { id: 'fairy_tales', name: '🧚 Fairy Tales' },
+                { id: 'adventure', name: '🦸 Adventure' },
+                { id: 'early_learning', name: '🔤 Early Learning' },
+                { id: 'kids_edu', name: '🧠 Educational Books' },
+                { id: 'young_readers', name: '🌟 Young Readers' }
+            ],
+            reference: [
+                { id: 'encyclopedias', name: '📚 Encyclopedias' },
+                { id: 'dictionaries', name: '📖 Dictionaries' },
+                { id: 'ref_books', name: '🗂️ Reference Books' },
+                { id: 'study_guides', name: '📝 Study Guides' },
+                { id: 'manuals', name: '📑 Manuals & Handbooks' },
+                { id: 'magazines', name: '📰 Magazines' },
+                { id: 'newspapers', name: '🗞️ Newspapers' }
+            ],
+            audio: [
+                { id: 'audiobooks', name: '🎧 Audiobooks' },
+                { id: 'summaries', name: '📝 Book Summaries' },
+                { id: 'reviews', name: '⭐ Book Reviews' },
+                { id: 'short_reads', name: '⚡ Short Reads' }
+            ]
+        };
+
+        let currentMainCat = 'ALL';
+        let currentSubCat = 'ALL';
+
+        function onMainCategoryChange(selectedCat) {
+            currentMainCat = selectedCat;
+            currentSubCat = 'ALL';
+            renderSubgenrePills(selectedCat);
+            filterBooks();
+        }
+
+        function renderSubgenrePills(catKey) {
+            const pillsContainer = document.getElementById('subgenre-pills');
+            pillsContainer.innerHTML = '';
+
+            // Base 'All Subgenres' pill
+            const allBtn = document.createElement('button');
+            allBtn.className = 'subgenre-btn active-pill bg-emerald-600 text-white px-3 py-1 rounded-lg text-xs font-semibold transition';
+            allBtn.innerText = 'All Subgenres';
+            allBtn.onclick = () => filterSubgenre('ALL', allBtn);
+            pillsContainer.appendChild(allBtn);
+
+            if (catKey !== 'ALL' && SUBGENRES_MAP[catKey]) {
+                SUBGENRES_MAP[catKey].forEach(sub => {
+                    const btn = document.createElement('button');
+                    btn.className = 'subgenre-btn bg-darkbg hover:bg-slate-800 text-gray-300 border border-cardborder px-3 py-1 rounded-lg text-xs font-semibold transition';
+                    btn.innerText = sub.name;
+                    btn.onclick = () => filterSubgenre(sub.id, btn);
+                    pillsContainer.appendChild(btn);
+                });
+            }
+        }
+
+        function filterSubgenre(subId, clickedBtn) {
+            currentSubCat = subId;
+            document.querySelectorAll('.subgenre-btn').forEach(btn => {
+                btn.className = 'subgenre-btn bg-darkbg hover:bg-slate-800 text-gray-300 border border-cardborder px-3 py-1 rounded-lg text-xs font-semibold transition';
+            });
+            if (clickedBtn) {
+                clickedBtn.className = 'subgenre-btn active-pill bg-emerald-600 text-white px-3 py-1 rounded-lg text-xs font-semibold transition';
+            }
+            filterBooks();
+        }
+
+        function filterBooks() {
+            const cards = document.querySelectorAll('.book-card');
+            const searchVal = document.getElementById('book-search-input').value.toLowerCase().trim();
+
+            cards.forEach(card => {
+                const cardCat = card.getAttribute('data-category');
+                const cardSub = card.getAttribute('data-subgenre');
+                const title = card.getAttribute('data-title') || '';
+                const author = card.getAttribute('data-author') || '';
+
+                const matchesCat = (currentMainCat === 'ALL' || cardCat === currentMainCat);
+                const matchesSub = (currentSubCat === 'ALL' || cardSub === currentSubCat);
+                const matchesSearch = (!searchVal || title.includes(searchVal) || author.includes(searchVal));
+
+                if (matchesCat && matchesSub && matchesSearch) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function filterBooksBySearch() {
+            filterBooks();
+        }
+    </script>
+
+    <!-- External App Logic Scripts -->
     <script src="js/supabase-config.js"></script>
     <script src="js/app.js"></script>
 </body>
