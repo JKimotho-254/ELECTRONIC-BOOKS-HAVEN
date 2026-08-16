@@ -1,6 +1,9 @@
 body {
-    background-color: #0d0d0d;
-    color: #f3f4f6;
+    background-color: #FFF8EE;
+    color: #3B2418;
+    /* very faint dot texture for a subtle "paper" feel — cheap, no image request */
+    background-image: radial-gradient(circle at 1px 1px, rgba(59, 36, 24, 0.035) 1px, transparent 0);
+    background-size: 26px 26px;
 }
 
 .transition-all {
@@ -11,12 +14,12 @@ body {
     width: 8px;
 }
 ::-webkit-scrollbar-track {
-    background: #0d0d0d;
+    background: #FFF8EE;
 }
 ::-webkit-scrollbar-thumb {
-    background: #262626;
+    background: #D9A441;
     border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #404040;
+    background: #C86B32;
 }
