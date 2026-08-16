@@ -1,34 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Electronic Books Haven — Digital Knowledge Vault</title>
 
-    <!-- Google Fonts: Plus Jakarta Sans -->
+    <!-- Google Fonts: Playfair Display (headings) + Inter (body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
                     },
                     colors: {
-                        darkbg: '#080c14',
-                        cardbg: '#0f172a',
-                        cardborder: '#1e293b',
-                        accent: {
-                            DEFAULT: '#10b981',
-                            hover: '#059669',
-                            light: '#34d399'
-                        }
+                        ivory: '#FFF8EE',
+                        espresso: '#3B2418',
+                        cream: '#FFFDF8',
+                        beige: '#E5D6C5',
+                        warmgray: '#765F52',
+                        warmgraylight: '#9A8779',
+                        burnt: '#C86B32',
+                        burntdark: '#A85526',
+                        gold: '#D9A441',
+                        sage: '#58745A'
                     }
                 }
             }
@@ -36,18 +38,18 @@
     </script>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-darkbg text-gray-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-white">
+<body class="bg-ivory text-espresso font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-burnt selection:text-white">
 
     <!-- Header / Branding -->
-    <header class="border-b border-cardborder bg-cardbg/80 backdrop-blur-md sticky top-0 z-50">
+    <header class="border-b border-beige bg-cream/90 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
-                <h1 class="text-lg md:text-xl font-extrabold tracking-wider text-emerald-400">ELECTRONIC BOOKS HAVEN</h1>
+                <span class="w-2.5 h-2.5 rounded-full bg-burnt"></span>
+                <h1 class="text-lg md:text-xl font-bold tracking-wide font-serif text-espresso">ELECTRONIC BOOKS HAVEN</h1>
             </div>
             <nav class="space-x-6 text-sm font-semibold">
-                <a href="#catalog" class="hover:text-emerald-400 transition-colors">Browse Catalog</a>
-                <a href="#reach-us" class="hover:text-emerald-400 transition-colors">Reach Us</a>
+                <a href="#catalog" class="text-espresso hover:text-burnt transition-colors">Browse Catalog</a>
+                <a href="#reach-us" class="text-espresso hover:text-burnt transition-colors">Reach Us</a>
             </nav>
         </div>
     </header>
@@ -56,100 +58,103 @@
     <main class="flex-grow max-w-6xl mx-auto px-4 py-10 w-full space-y-16">
 
         <!-- 1. Landing / Introduction Section -->
-        <section id="landing-intro" class="text-center space-y-8 py-6 border-b border-cardborder">
-            <div class="max-w-3xl mx-auto space-y-4">
-                <span class="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full text-xs font-semibold tracking-wide uppercase">Your Digital Vault</span>
-                <h2 id="editable-title" class="text-3xl md:text-6xl font-black tracking-tight text-white leading-tight">
-                    Master Your Craft. <br class="hidden sm:inline"><span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">Expand Your Mind.</span>
+        <section id="landing-intro" class="text-center space-y-8 py-8 border-b border-beige">
+            <div class="max-w-3xl mx-auto space-y-5">
+                <span class="inline-block px-3 py-1 bg-gold/15 text-espresso border border-gold/30 rounded-full text-xs font-semibold tracking-wide uppercase">Your Digital Vault</span>
+                <h2 id="editable-title" class="text-4xl md:text-6xl font-bold font-serif tracking-tight text-espresso leading-tight">
+                    Your Digital Vault <br class="hidden sm:inline">for Great Books
                 </h2>
-                <p id="editable-who" class="text-gray-400 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
-                    Electronic Books Haven is your ultimate portal for premium curated digital knowledge, high-impact ebooks, audio summaries, and professional growth guides.
+                <p id="editable-who" class="text-warmgray text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+                    Electronic Books Haven is your ultimate portal for premium curated digital knowledge — ebooks, PDFs, EPUBs, audiobooks and book summaries across every genre.
                 </p>
+                <div class="pt-2">
+                    <a href="#catalog" class="inline-block bg-burnt hover:bg-burntdark text-white font-bold text-sm tracking-wide px-8 py-3.5 rounded-xl transition-all hover:-translate-y-0.5 shadow-sm">EXPLORE BOOKS →</a>
+                </div>
             </div>
-            
+
             <!-- What We Offer Highlights -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 text-left">
-                <div class="bg-cardbg p-5 rounded-2xl border border-cardborder hover:border-emerald-500/40 transition">
-                    <span class="text-emerald-400 font-extrabold text-lg">01</span>
-                    <h3 class="font-bold mt-1 text-white">Ebooks & PDFs</h3>
-                    <p class="text-xs text-gray-400 mt-1">High-quality formatted digital reads.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 text-left">
+                <div class="bg-cream p-5 rounded-2xl border border-beige shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
+                    <span class="text-2xl">📖</span>
+                    <h3 class="font-bold mt-2 text-espresso">Ebooks & PDFs</h3>
+                    <p class="text-xs text-warmgray mt-1">High-quality formatted digital reads.</p>
                 </div>
-                <div class="bg-cardbg p-5 rounded-2xl border border-cardborder hover:border-emerald-500/40 transition">
-                    <span class="text-emerald-400 font-extrabold text-lg">02</span>
-                    <h3 class="font-bold mt-1 text-white">EPUB Copies</h3>
-                    <p class="text-xs text-gray-400 mt-1">Optimized for mobile & e-readers.</p>
+                <div class="bg-cream p-5 rounded-2xl border border-beige shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
+                    <span class="text-2xl">📱</span>
+                    <h3 class="font-bold mt-2 text-espresso">EPUB Copies</h3>
+                    <p class="text-xs text-warmgray mt-1">Optimized for mobile & e-readers.</p>
                 </div>
-                <div class="bg-cardbg p-5 rounded-2xl border border-cardborder hover:border-emerald-500/40 transition">
-                    <span class="text-emerald-400 font-extrabold text-lg">03</span>
-                    <h3 class="font-bold mt-1 text-white">Audio Copies</h3>
-                    <p class="text-xs text-gray-400 mt-1">Immersive audio learning on the go.</p>
+                <div class="bg-cream p-5 rounded-2xl border border-beige shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
+                    <span class="text-2xl">🎧</span>
+                    <h3 class="font-bold mt-2 text-espresso">Audio Copies</h3>
+                    <p class="text-xs text-warmgray mt-1">Immersive audio learning on the go.</p>
                 </div>
-                <div class="bg-cardbg p-5 rounded-2xl border border-cardborder hover:border-emerald-500/40 transition">
-                    <span class="text-emerald-400 font-extrabold text-lg">04</span>
-                    <h3 class="font-bold mt-1 text-white">Book Summaries</h3>
-                    <p class="text-xs text-gray-400 mt-1">Extract core takeaways rapidly.</p>
+                <div class="bg-cream p-5 rounded-2xl border border-beige shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
+                    <span class="text-2xl">💡</span>
+                    <h3 class="font-bold mt-2 text-espresso">Book Summaries</h3>
+                    <p class="text-xs text-warmgray mt-1">Extract core takeaways rapidly.</p>
                 </div>
             </div>
         </section>
 
         <!-- 2. Reach Us & Socials Section -->
-        <section id="reach-us" class="bg-cardbg border border-cardborder rounded-3xl p-6 md:p-8 space-y-6">
+        <section id="reach-us" class="bg-cream border border-beige rounded-3xl p-6 md:p-8 space-y-6 shadow-sm">
             <div>
-                <h3 class="text-2xl font-extrabold text-white">Reach & Follow Us</h3>
-                <p class="text-xs text-gray-400 mt-1">Connect with our team directly or join our community channels.</p>
+                <h3 class="text-2xl font-bold font-serif text-espresso">Reach & Follow Us</h3>
+                <p class="text-xs text-warmgray mt-1">Connect with our team directly or join our community channels.</p>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                
+
                 <!-- WhatsApp -->
-                <div class="flex items-center justify-between bg-darkbg p-4 rounded-2xl border border-cardborder hover:border-emerald-500/30 transition">
+                <div class="flex items-center justify-between bg-ivory p-4 rounded-2xl border border-beige hover:border-burnt/40 transition">
                     <div>
-                        <span class="text-xs text-gray-400 font-medium block">WhatsApp</span>
-                        <span id="whatsapp-val" class="font-mono text-sm font-semibold text-white">+254112828590</span>
+                        <span class="text-xs text-warmgray font-medium block">WhatsApp</span>
+                        <span id="whatsapp-val" class="font-mono text-sm font-semibold text-espresso">+254112828590</span>
                     </div>
                     <div class="flex gap-2">
-                        <a href="https://wa.me/254112828590" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1.5 rounded-xl text-xs font-bold transition">Open</a>
-                        <button onclick="navigator.clipboard.writeText('+254112828590')" class="bg-slate-800 hover:bg-slate-700 text-gray-300 px-3 py-1.5 rounded-xl text-xs font-semibold transition">Copy</button>
+                        <a href="https://wa.me/254112828590" target="_blank" class="bg-burnt hover:bg-burntdark text-white px-3 py-1.5 rounded-xl text-xs font-bold transition">Open</a>
+                        <button onclick="navigator.clipboard.writeText('+254112828590')" class="bg-cream border border-beige hover:bg-beige/50 text-espresso px-3 py-1.5 rounded-xl text-xs font-semibold transition">Copy</button>
                     </div>
                 </div>
 
                 <!-- Email -->
-                <div class="flex items-center justify-between bg-darkbg p-4 rounded-2xl border border-cardborder hover:border-emerald-500/30 transition">
+                <div class="flex items-center justify-between bg-ivory p-4 rounded-2xl border border-beige hover:border-burnt/40 transition">
                     <div>
-                        <span class="text-xs text-gray-400 font-medium block">Email Support</span>
-                        <span id="email-val" class="font-mono text-xs text-white truncate max-w-[140px] block">electronicbookshaven@gmail.com</span>
+                        <span class="text-xs text-warmgray font-medium block">Email Support</span>
+                        <span id="email-val" class="font-mono text-xs text-espresso truncate max-w-[140px] block">electronicbookshaven@gmail.com</span>
                     </div>
                     <div class="flex gap-2">
-                        <a href="mailto:electronicbookshaven@gmail.com" class="bg-teal-600 hover:bg-teal-500 text-white px-3 py-1.5 rounded-xl text-xs font-bold transition">Email</a>
-                        <button onclick="navigator.clipboard.writeText('electronicbookshaven@gmail.com')" class="bg-slate-800 hover:bg-slate-700 text-gray-300 px-3 py-1.5 rounded-xl text-xs font-semibold transition">Copy</button>
+                        <a href="mailto:electronicbookshaven@gmail.com" class="bg-burnt hover:bg-burntdark text-white px-3 py-1.5 rounded-xl text-xs font-bold transition">Email</a>
+                        <button onclick="navigator.clipboard.writeText('electronicbookshaven@gmail.com')" class="bg-cream border border-beige hover:bg-beige/50 text-espresso px-3 py-1.5 rounded-xl text-xs font-semibold transition">Copy</button>
                     </div>
                 </div>
 
                 <!-- Telegram -->
-                <div class="flex items-center justify-between bg-darkbg p-4 rounded-2xl border border-cardborder hover:border-emerald-500/30 transition">
+                <div class="flex items-center justify-between bg-ivory p-4 rounded-2xl border border-beige hover:border-burnt/40 transition">
                     <div>
-                        <span class="text-xs text-gray-400 font-medium block">Telegram Channel</span>
-                        <span class="font-bold text-sm text-white">Official Channel</span>
+                        <span class="text-xs text-warmgray font-medium block">Telegram Channel</span>
+                        <span class="font-bold text-sm text-espresso">Official Channel</span>
                     </div>
-                    <a href="https://t.me/electronicbookshaven" target="_blank" class="bg-sky-600 hover:bg-sky-500 text-white px-4 py-1.5 rounded-xl text-xs font-bold transition">Join</a>
+                    <a href="https://t.me/electronicbookshaven" target="_blank" class="bg-burnt hover:bg-burntdark text-white px-4 py-1.5 rounded-xl text-xs font-bold transition">Join</a>
                 </div>
 
                 <!-- Facebook -->
-                <div class="flex items-center justify-between bg-darkbg p-4 rounded-2xl border border-cardborder hover:border-emerald-500/30 transition">
+                <div class="flex items-center justify-between bg-ivory p-4 rounded-2xl border border-beige hover:border-burnt/40 transition">
                     <div>
-                        <span class="text-xs text-gray-400 font-medium block">Facebook Page</span>
-                        <span class="font-bold text-sm text-white">Official Page</span>
+                        <span class="text-xs text-warmgray font-medium block">Facebook Page</span>
+                        <span class="font-bold text-sm text-espresso">Official Page</span>
                     </div>
-                    <a href="https://www.facebook.com/share/14jbVaNCoUh/" target="_blank" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-1.5 rounded-xl text-xs font-bold transition">Visit</a>
+                    <a href="https://www.facebook.com/share/14jbVaNCoUh/" target="_blank" class="bg-burnt hover:bg-burntdark text-white px-4 py-1.5 rounded-xl text-xs font-bold transition">Visit</a>
                 </div>
 
                 <!-- TikTok -->
-                <div class="flex items-center justify-between bg-darkbg p-4 rounded-2xl border border-cardborder hover:border-emerald-500/30 transition">
+                <div class="flex items-center justify-between bg-ivory p-4 rounded-2xl border border-beige hover:border-burnt/40 transition">
                     <div>
-                        <span class="text-xs text-gray-400 font-medium block">TikTok</span>
-                        <span class="font-bold text-sm text-white">@electronicbookshaven</span>
+                        <span class="text-xs text-warmgray font-medium block">TikTok</span>
+                        <span class="font-bold text-sm text-espresso">@electronicbookshaven</span>
                     </div>
-                    <a href="https://www.tiktok.com/@electronicbookshaven?_r=1&_t=ZS-98lfTo9Dndq" target="_blank" class="bg-pink-600 hover:bg-pink-500 text-white px-4 py-1.5 rounded-xl text-xs font-bold transition">Follow</a>
+                    <a href="https://www.tiktok.com/@electronicbookshaven?_r=1&_t=ZS-98lfTo9Dndq" target="_blank" class="bg-burnt hover:bg-burntdark text-white px-4 py-1.5 rounded-xl text-xs font-bold transition">Follow</a>
                 </div>
 
             </div>
@@ -160,22 +165,22 @@
             <div class="space-y-4">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
-                        <h3 class="text-2xl font-black text-white flex items-center gap-2">
-                            <span>📚</span> Browse Catalog by Genre
+                        <h3 class="text-2xl font-bold font-serif text-espresso flex items-center gap-2">
+                            <span>📚</span> Explore by Genre
                         </h3>
-                        <p class="text-xs text-gray-400 mt-0.5">Select a main category, refine by subgenre, or search directly.</p>
+                        <p class="text-xs text-warmgray mt-0.5">Find your next great read — select a category, refine by subgenre, or search directly.</p>
                     </div>
 
                     <!-- Search Input -->
                     <div class="relative min-w-[260px]">
-                        <input type="text" id="book-search-input" onkeyup="filterBooksBySearch()" placeholder="🔍 Search book title or author..." class="w-full bg-cardbg border border-cardborder rounded-xl px-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 transition">
+                        <input type="text" id="book-search-input" onkeyup="filterBooksBySearch()" placeholder="🔍 Search books, authors or genres..." class="w-full bg-cream border border-beige rounded-xl px-4 py-2 text-sm text-espresso placeholder-warmgraylight focus:outline-none focus:border-burnt transition">
                     </div>
                 </div>
 
                 <!-- Main Category Selection Dropdown/Selector -->
-                <div class="bg-cardbg border border-cardborder rounded-2xl p-4 space-y-3">
-                    <label class="block text-xs font-bold uppercase tracking-wider text-emerald-400">Main Category</label>
-                    <select id="main-category-select" onchange="onMainCategoryChange(this.value)" class="w-full bg-darkbg border border-cardborder rounded-xl px-4 py-3 text-sm font-semibold text-white focus:outline-none focus:border-emerald-500 transition">
+                <div class="bg-cream border border-beige rounded-2xl p-4 space-y-3 shadow-sm">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-burnt">Main Category</label>
+                    <select id="main-category-select" onchange="onMainCategoryChange(this.value)" class="w-full bg-ivory border border-beige rounded-xl px-4 py-3 text-sm font-semibold text-espresso focus:outline-none focus:border-burnt transition">
                         <option value="ALL">All Categories (Show Everything)</option>
                         <option value="academic">🎓 1. Academic & Education</option>
                         <option value="fiction">📖 2. Fiction & Literature</option>
@@ -191,11 +196,11 @@
                     </select>
 
                     <!-- Subgenre Pills Container (Dynamically Populated) -->
-                    <div id="subgenre-container" class="space-y-2 pt-2 border-t border-cardborder">
-                        <span class="block text-xs font-medium text-gray-400">Subgenres:</span>
+                    <div id="subgenre-container" class="space-y-2 pt-2 border-t border-beige">
+                        <span class="block text-xs font-medium text-warmgray">Subgenres:</span>
                         <div id="subgenre-pills" class="flex flex-wrap gap-2">
                             <!-- Injected dynamically via JS depending on main category selection -->
-                            <button onclick="filterSubgenre('ALL')" class="subgenre-btn active-pill bg-emerald-600 text-white px-3 py-1 rounded-lg text-xs font-semibold transition">All Subgenres</button>
+                            <button onclick="filterSubgenre('ALL')" class="subgenre-btn active-pill bg-burnt text-white px-3 py-1 rounded-lg text-xs font-semibold transition">All Subgenres</button>
                         </div>
                     </div>
                 </div>
@@ -205,98 +210,122 @@
             <div id="book-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
                 <!-- Book 1: Atomic Habits -->
-                <div class="book-card bg-cardbg border border-cardborder rounded-3xl p-5 flex flex-col justify-between transition-all hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/5" data-category="selfhelp" data-subgenre="habits" data-title="atomic habits" data-author="james clear">
+                <div class="book-card bg-cream border border-beige rounded-3xl p-5 flex flex-col justify-between transition-all hover:border-burnt/40 hover:shadow-lg hover:-translate-y-1" data-category="selfhelp" data-subgenre="habits" data-title="atomic habits" data-author="james clear">
                     <div>
-                        <div class="h-52 bg-slate-900/80 rounded-2xl mb-4 flex items-center justify-center border border-cardborder text-gray-500 text-xs font-semibold">Cover Preview</div>
-                        <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-2 inline-block">Personal Growth & Habits</span>
-                        <h4 class="font-extrabold text-lg text-white">Atomic Habits</h4>
-                        <p class="text-sm text-gray-400">James Clear</p>
-                        <p class="text-emerald-400 font-extrabold text-base mt-2">KSh 70</p>
-                        
-                        <div id="details-atomic-habits" class="hidden mt-4 pt-4 border-t border-cardborder space-y-2 text-sm text-gray-300">
-                            <p><strong>Description:</strong> An easy & proven way to build good habits & break bad ones.</p>
-                            <p><strong>Pages:</strong> 320</p>
-                            <p><strong>Available formats:</strong> PDF, EPUB</p>
-                            <p><strong>Audio copy:</strong> Available</p>
-                            <p><strong>Summary:</strong> Available</p>
+                        <div class="h-52 bg-beige/25 rounded-2xl mb-4 flex items-center justify-center border border-beige text-warmgraylight text-xs font-semibold">Cover Preview</div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-beige/50 text-warmgray mb-2 inline-block">Personal Growth & Habits</span>
+                        <h4 class="font-bold text-lg font-serif text-espresso">Atomic Habits</h4>
+                        <p class="text-sm text-warmgray">James Clear</p>
+                        <p class="text-espresso font-extrabold text-base mt-2">KSh 70</p>
+                        <div class="flex flex-wrap gap-1.5 mt-2">
+                            <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-ivory border border-beige text-warmgray">PDF</span>
+                            <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-ivory border border-beige text-warmgray">EPUB</span>
+                            <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-ivory border border-beige text-warmgray">AUDIO</span>
+                            <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-ivory border border-beige text-warmgray">SUMMARY</span>
+                        </div>
+
+                        <div id="details-atomic-habits" class="hidden mt-4 pt-4 border-t border-beige space-y-2 text-sm text-warmgray">
+                            <p><strong class="text-espresso">Description:</strong> An easy & proven way to build good habits & break bad ones.</p>
+                            <p><strong class="text-espresso">Pages:</strong> 320</p>
+                            <p><strong class="text-espresso">Available formats:</strong> PDF, EPUB</p>
+                            <p><strong class="text-espresso">Audio copy:</strong> Available</p>
+                            <p><strong class="text-espresso">Summary:</strong> Available</p>
                         </div>
                     </div>
 
                     <div class="mt-6 space-y-2">
-                        <button onclick="toggleDetails('details-atomic-habits', this)" class="w-full bg-slate-800/80 hover:bg-slate-700 text-gray-300 py-2.5 rounded-xl text-xs font-bold transition">SHOW MORE ▼</button>
-                        <button onclick="startCheckout('Atomic Habits', 70)" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-2.5 rounded-xl text-xs font-extrabold transition tracking-wide">BUY NOW</button>
+                        <button onclick="toggleDetails('details-atomic-habits', this)" class="w-full bg-cream border border-beige hover:border-burnt/50 text-burnt py-2.5 rounded-xl text-xs font-bold transition">SHOW MORE ▼</button>
+                        <button onclick="startCheckout('Atomic Habits', 70)" class="w-full bg-burnt hover:bg-burntdark text-white py-2.5 rounded-xl text-xs font-extrabold transition-all tracking-wide hover:-translate-y-0.5">BUY NOW →</button>
                     </div>
                 </div>
 
                 <!-- Book 2: The Psychology of Money -->
-                <div class="book-card bg-cardbg border border-cardborder rounded-3xl p-5 flex flex-col justify-between transition-all hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/5" data-category="business" data-subgenre="finance" data-title="the psychology of money" data-author="morgan housel">
+                <div class="book-card bg-cream border border-beige rounded-3xl p-5 flex flex-col justify-between transition-all hover:border-burnt/40 hover:shadow-lg hover:-translate-y-1" data-category="business" data-subgenre="finance" data-title="the psychology of money" data-author="morgan housel">
                     <div>
-                        <div class="h-52 bg-slate-900/80 rounded-2xl mb-4 flex items-center justify-center border border-cardborder text-gray-500 text-xs font-semibold">Cover Preview</div>
-                        <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-2 inline-block">Personal Finance & Investing</span>
-                        <h4 class="font-extrabold text-lg text-white">The Psychology of Money</h4>
-                        <p class="text-sm text-gray-400">Morgan Housel</p>
-                        <p class="text-emerald-400 font-extrabold text-base mt-2">KSh 70</p>
-                        
-                        <div id="details-psych-money" class="hidden mt-4 pt-4 border-t border-cardborder space-y-2 text-sm text-gray-300">
-                            <p><strong>Description:</strong> Timeless lessons on wealth, greed, and happiness.</p>
-                            <p><strong>Pages:</strong> 252</p>
-                            <p><strong>Available formats:</strong> PDF, EPUB</p>
-                            <p><strong>Audio copy:</strong> Available</p>
-                            <p><strong>Summary:</strong> Available</p>
+                        <div class="h-52 bg-beige/25 rounded-2xl mb-4 flex items-center justify-center border border-beige text-warmgraylight text-xs font-semibold">Cover Preview</div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-beige/50 text-warmgray mb-2 inline-block">Personal Finance & Investing</span>
+                        <h4 class="font-bold text-lg font-serif text-espresso">The Psychology of Money</h4>
+                        <p class="text-sm text-warmgray">Morgan Housel</p>
+                        <p class="text-espresso font-extrabold text-base mt-2">KSh 70</p>
+                        <div class="flex flex-wrap gap-1.5 mt-2">
+                            <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-ivory border border-beige text-warmgray">PDF</span>
+                            <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-ivory border border-beige text-warmgray">EPUB</span>
+                            <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-ivory border border-beige text-warmgray">AUDIO</span>
+                            <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-ivory border border-beige text-warmgray">SUMMARY</span>
+                        </div>
+
+                        <div id="details-psych-money" class="hidden mt-4 pt-4 border-t border-beige space-y-2 text-sm text-warmgray">
+                            <p><strong class="text-espresso">Description:</strong> Timeless lessons on wealth, greed, and happiness.</p>
+                            <p><strong class="text-espresso">Pages:</strong> 252</p>
+                            <p><strong class="text-espresso">Available formats:</strong> PDF, EPUB</p>
+                            <p><strong class="text-espresso">Audio copy:</strong> Available</p>
+                            <p><strong class="text-espresso">Summary:</strong> Available</p>
                         </div>
                     </div>
 
                     <div class="mt-6 space-y-2">
-                        <button onclick="toggleDetails('details-psych-money', this)" class="w-full bg-slate-800/80 hover:bg-slate-700 text-gray-300 py-2.5 rounded-xl text-xs font-bold transition">SHOW MORE ▼</button>
-                        <button onclick="startCheckout('The Psychology of Money', 70)" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-2.5 rounded-xl text-xs font-extrabold transition tracking-wide">BUY NOW</button>
+                        <button onclick="toggleDetails('details-psych-money', this)" class="w-full bg-cream border border-beige hover:border-burnt/50 text-burnt py-2.5 rounded-xl text-xs font-bold transition">SHOW MORE ▼</button>
+                        <button onclick="startCheckout('The Psychology of Money', 70)" class="w-full bg-burnt hover:bg-burntdark text-white py-2.5 rounded-xl text-xs font-extrabold transition-all tracking-wide hover:-translate-y-0.5">BUY NOW →</button>
                     </div>
                 </div>
 
                 <!-- Book 3: Deep Work -->
-                <div class="book-card bg-cardbg border border-cardborder rounded-3xl p-5 flex flex-col justify-between transition-all hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/5" data-category="selfhelp" data-subgenre="productivity" data-title="deep work" data-author="cal newport">
+                <div class="book-card bg-cream border border-beige rounded-3xl p-5 flex flex-col justify-between transition-all hover:border-burnt/40 hover:shadow-lg hover:-translate-y-1" data-category="selfhelp" data-subgenre="productivity" data-title="deep work" data-author="cal newport">
                     <div>
-                        <div class="h-52 bg-slate-900/80 rounded-2xl mb-4 flex items-center justify-center border border-cardborder text-gray-500 text-xs font-semibold">Cover Preview</div>
-                        <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-2 inline-block">Productivity & Time Management</span>
-                        <h4 class="font-extrabold text-lg text-white">Deep Work</h4>
-                        <p class="text-sm text-gray-400">Cal Newport</p>
-                        <p class="text-emerald-400 font-extrabold text-base mt-2">KSh 70</p>
-                        
-                        <div id="details-deep-work" class="hidden mt-4 pt-4 border-t border-cardborder space-y-2 text-sm text-gray-300">
-                            <p><strong>Description:</strong> Rules for focused success in a distracted world.</p>
-                            <p><strong>Pages:</strong> 304</p>
-                            <p><strong>Available formats:</strong> PDF, EPUB</p>
-                            <p><strong>Audio copy:</strong> Available</p>
-                            <p><strong>Summary:</strong> Available</p>
+                        <div class="h-52 bg-beige/25 rounded-2xl mb-4 flex items-center justify-center border border-beige text-warmgraylight text-xs font-semibold">Cover Preview</div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-beige/50 text-warmgray mb-2 inline-block">Productivity & Time Management</span>
+                        <h4 class="font-bold text-lg font-serif text-espresso">Deep Work</h4>
+                        <p class="text-sm text-warmgray">Cal Newport</p>
+                        <p class="text-espresso font-extrabold text-base mt-2">KSh 70</p>
+                        <div class="flex flex-wrap gap-1.5 mt-2">
+                            <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-ivory border border-beige text-warmgray">PDF</span>
+                            <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-ivory border border-beige text-warmgray">EPUB</span>
+                            <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-ivory border border-beige text-warmgray">AUDIO</span>
+                            <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-ivory border border-beige text-warmgray">SUMMARY</span>
+                        </div>
+
+                        <div id="details-deep-work" class="hidden mt-4 pt-4 border-t border-beige space-y-2 text-sm text-warmgray">
+                            <p><strong class="text-espresso">Description:</strong> Rules for focused success in a distracted world.</p>
+                            <p><strong class="text-espresso">Pages:</strong> 304</p>
+                            <p><strong class="text-espresso">Available formats:</strong> PDF, EPUB</p>
+                            <p><strong class="text-espresso">Audio copy:</strong> Available</p>
+                            <p><strong class="text-espresso">Summary:</strong> Available</p>
                         </div>
                     </div>
 
                     <div class="mt-6 space-y-2">
-                        <button onclick="toggleDetails('details-deep-work', this)" class="w-full bg-slate-800/80 hover:bg-slate-700 text-gray-300 py-2.5 rounded-xl text-xs font-bold transition">SHOW MORE ▼</button>
-                        <button onclick="startCheckout('Deep Work', 70)" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-2.5 rounded-xl text-xs font-extrabold transition tracking-wide">BUY NOW</button>
+                        <button onclick="toggleDetails('details-deep-work', this)" class="w-full bg-cream border border-beige hover:border-burnt/50 text-burnt py-2.5 rounded-xl text-xs font-bold transition">SHOW MORE ▼</button>
+                        <button onclick="startCheckout('Deep Work', 70)" class="w-full bg-burnt hover:bg-burntdark text-white py-2.5 rounded-xl text-xs font-extrabold transition-all tracking-wide hover:-translate-y-0.5">BUY NOW →</button>
                     </div>
                 </div>
 
                 <!-- Book 4: Clean Code (Technology Sample) -->
-                <div class="book-card bg-cardbg border border-cardborder rounded-3xl p-5 flex flex-col justify-between transition-all hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/5" data-category="technology" data-subgenre="programming" data-title="clean code" data-author="robert c. martin">
+                <div class="book-card bg-cream border border-beige rounded-3xl p-5 flex flex-col justify-between transition-all hover:border-burnt/40 hover:shadow-lg hover:-translate-y-1" data-category="technology" data-subgenre="programming" data-title="clean code" data-author="robert c. martin">
                     <div>
-                        <div class="h-52 bg-slate-900/80 rounded-2xl mb-4 flex items-center justify-center border border-cardborder text-gray-500 text-xs font-semibold">Cover Preview</div>
-                        <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-2 inline-block">Programming & Coding</span>
-                        <h4 class="font-extrabold text-lg text-white">Clean Code</h4>
-                        <p class="text-sm text-gray-400">Robert C. Martin</p>
-                        <p class="text-emerald-400 font-extrabold text-base mt-2">KSh 70</p>
-                        
-                        <div id="details-clean-code" class="hidden mt-4 pt-4 border-t border-cardborder space-y-2 text-sm text-gray-300">
-                            <p><strong>Description:</strong> A handbook of agile software craftsmanship.</p>
-                            <p><strong>Pages:</strong> 464</p>
-                            <p><strong>Available formats:</strong> PDF, EPUB</p>
-                            <p><strong>Audio copy:</strong> Available</p>
-                            <p><strong>Summary:</strong> Available</p>
+                        <div class="h-52 bg-beige/25 rounded-2xl mb-4 flex items-center justify-center border border-beige text-warmgraylight text-xs font-semibold">Cover Preview</div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-beige/50 text-warmgray mb-2 inline-block">Programming & Coding</span>
+                        <h4 class="font-bold text-lg font-serif text-espresso">Clean Code</h4>
+                        <p class="text-sm text-warmgray">Robert C. Martin</p>
+                        <p class="text-espresso font-extrabold text-base mt-2">KSh 70</p>
+                        <div class="flex flex-wrap gap-1.5 mt-2">
+                            <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-ivory border border-beige text-warmgray">PDF</span>
+                            <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-ivory border border-beige text-warmgray">EPUB</span>
+                            <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-ivory border border-beige text-warmgray">AUDIO</span>
+                            <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-ivory border border-beige text-warmgray">SUMMARY</span>
+                        </div>
+
+                        <div id="details-clean-code" class="hidden mt-4 pt-4 border-t border-beige space-y-2 text-sm text-warmgray">
+                            <p><strong class="text-espresso">Description:</strong> A handbook of agile software craftsmanship.</p>
+                            <p><strong class="text-espresso">Pages:</strong> 464</p>
+                            <p><strong class="text-espresso">Available formats:</strong> PDF, EPUB</p>
+                            <p><strong class="text-espresso">Audio copy:</strong> Available</p>
+                            <p><strong class="text-espresso">Summary:</strong> Available</p>
                         </div>
                     </div>
 
                     <div class="mt-6 space-y-2">
-                        <button onclick="toggleDetails('details-clean-code', this)" class="w-full bg-slate-800/80 hover:bg-slate-700 text-gray-300 py-2.5 rounded-xl text-xs font-bold transition">SHOW MORE ▼</button>
-                        <button onclick="startCheckout('Clean Code', 70)" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-2.5 rounded-xl text-xs font-extrabold transition tracking-wide">BUY NOW</button>
+                        <button onclick="toggleDetails('details-clean-code', this)" class="w-full bg-cream border border-beige hover:border-burnt/50 text-burnt py-2.5 rounded-xl text-xs font-bold transition">SHOW MORE ▼</button>
+                        <button onclick="startCheckout('Clean Code', 70)" class="w-full bg-burnt hover:bg-burntdark text-white py-2.5 rounded-xl text-xs font-extrabold transition-all tracking-wide hover:-translate-y-0.5">BUY NOW →</button>
                     </div>
                 </div>
 
@@ -304,26 +333,28 @@
         </section>
 
         <!-- 4. Checkout & Verification Workflow Section -->
-        <section id="checkout-section" class="hidden bg-cardbg border border-cardborder rounded-3xl p-6 md:p-8 max-w-xl mx-auto w-full space-y-6">
-            <h3 class="text-xl font-bold text-emerald-400">Checkout & Payment</h3>
+        <section id="checkout-section" class="hidden bg-cream border border-beige rounded-3xl p-6 md:p-8 max-w-xl mx-auto w-full space-y-6 shadow-sm">
+            <h3 class="text-xl font-bold font-serif text-burnt">🔐 Secure Checkout</h3>
             <div id="checkout-step-1" class="space-y-4">
-                <p class="text-xs text-gray-400">Your email is required for purchase records purposes and for updates about new books and content updates.</p>
+                <p class="text-xs text-warmgray">Your email is required for purchase records purposes and for updates about new books and content updates.</p>
                 <div>
-                    <label class="block text-xs text-gray-400 mb-1">Your Name</label>
-                    <input type="text" id="cust-name" class="w-full bg-darkbg border border-cardborder rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500 transition" placeholder="John Doe">
+                    <label class="block text-xs text-warmgray mb-1">Your Name</label>
+                    <input type="text" id="cust-name" class="w-full bg-ivory border border-beige rounded-xl px-4 py-2.5 text-sm text-espresso focus:outline-none focus:border-burnt transition" placeholder="John Doe">
                 </div>
                 <div>
-                    <label class="block text-xs text-gray-400 mb-1">Your Email</label>
-                    <input type="email" id="cust-email" class="w-full bg-darkbg border border-cardborder rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500 transition" placeholder="john@example.com">
+                    <label class="block text-xs text-warmgray mb-1">Your Email</label>
+                    <input type="email" id="cust-email" class="w-full bg-ivory border border-beige rounded-xl px-4 py-2.5 text-sm text-espresso focus:outline-none focus:border-burnt transition" placeholder="john@example.com">
                 </div>
-                <button onclick="proceedToPaymentDetails()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-xl font-extrabold text-sm transition">Continue to Payment Details</button>
+                <button onclick="proceedToPaymentDetails()" class="w-full bg-burnt hover:bg-burntdark text-white py-3 rounded-xl font-extrabold text-sm transition-all hover:-translate-y-0.5">Continue to Payment Details</button>
+                <p class="text-[11px] text-warmgraylight text-center">You'll confirm your order and payment directly via WhatsApp.</p>
             </div>
         </section>
 
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-cardborder bg-cardbg py-6 text-center text-xs text-gray-500">
+    <footer class="border-t border-espresso bg-espresso py-8 text-center text-xs text-ivory">
+        <p class="font-serif text-sm text-gold mb-1">Electronic Books Haven</p>
         &copy; 2026 Electronic Books Haven. All rights reserved.
     </footer>
 
@@ -463,7 +494,7 @@
 
             // Base 'All Subgenres' pill
             const allBtn = document.createElement('button');
-            allBtn.className = 'subgenre-btn active-pill bg-emerald-600 text-white px-3 py-1 rounded-lg text-xs font-semibold transition';
+            allBtn.className = 'subgenre-btn active-pill bg-burnt text-white px-3 py-1 rounded-lg text-xs font-semibold transition';
             allBtn.innerText = 'All Subgenres';
             allBtn.onclick = () => filterSubgenre('ALL', allBtn);
             pillsContainer.appendChild(allBtn);
@@ -471,7 +502,7 @@
             if (catKey !== 'ALL' && SUBGENRES_MAP[catKey]) {
                 SUBGENRES_MAP[catKey].forEach(sub => {
                     const btn = document.createElement('button');
-                    btn.className = 'subgenre-btn bg-darkbg hover:bg-slate-800 text-gray-300 border border-cardborder px-3 py-1 rounded-lg text-xs font-semibold transition';
+                    btn.className = 'subgenre-btn bg-ivory hover:bg-beige/50 text-espresso border border-beige px-3 py-1 rounded-lg text-xs font-semibold transition';
                     btn.innerText = sub.name;
                     btn.onclick = () => filterSubgenre(sub.id, btn);
                     pillsContainer.appendChild(btn);
@@ -482,10 +513,10 @@
         function filterSubgenre(subId, clickedBtn) {
             currentSubCat = subId;
             document.querySelectorAll('.subgenre-btn').forEach(btn => {
-                btn.className = 'subgenre-btn bg-darkbg hover:bg-slate-800 text-gray-300 border border-cardborder px-3 py-1 rounded-lg text-xs font-semibold transition';
+                btn.className = 'subgenre-btn bg-ivory hover:bg-beige/50 text-espresso border border-beige px-3 py-1 rounded-lg text-xs font-semibold transition';
             });
             if (clickedBtn) {
-                clickedBtn.className = 'subgenre-btn active-pill bg-emerald-600 text-white px-3 py-1 rounded-lg text-xs font-semibold transition';
+                clickedBtn.className = 'subgenre-btn active-pill bg-burnt text-white px-3 py-1 rounded-lg text-xs font-semibold transition';
             }
             filterBooks();
         }
